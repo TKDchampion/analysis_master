@@ -40,8 +40,8 @@ class UserModel {
     public getUserMembers(req: any) {
         const reference = db.collection('users').doc('user');
         const formatResultFn = (result: any) => {
-            const list = Object.keys(result.data()).map(i => i);
-            return list
+            const list = Object.keys(result.data());
+            return {length: list.length}
         }
         const asyncData = dataBase.get({ reference: reference }, formatResultFn);
         return asyncData;
